@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<title>Detail Product <?php echo $data['title']; ?></title>
+	<style type="text/css">
+.box{
+background-color:#fff;
+overflow: hidden;
+height:350px;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+-ms-border-radius: 5px;
+-o-border-radius: 5px;
+border-radius:5px;
+-webkit-box-shadow: 0px 3px 2px 0px rgba(0,0,0,0.3);
+-moz-box-shadow: 0px 3px 2px 0px rgba(0,0,0,0.3);
+box-shadow: 0px 3px 2px 0px rgba(0,0,0,0.3);
+}
+.box img{
+  width:101%;
+  height:150px;
+}
+.box h3{
+  padding:15px;
+  margin:0px;
+}
+.box p{
+    overflow:hidden;
+    height:100px;
+    padding-left:15px;
+    padding-right:15px;
+    margin:0px;
+}
+ 
+.desc{
+  height:150px;
+  border-bottom:1px solid #ddd;
+}
+.start{
+  float:left;
+  padding:15px;
+  margin:0px;
+}
+.end{
+  float:right;
+  padding:15px;
+  margin:0px;
+}
+	</style>
+</head>
+<body>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-xs-12">
+		<div class="col-md-3" style="text-align: center">
+		    <div class="box">
+		    <img src="<?php echo $data['image']; ?>" width="300px" height="300px" class="img-responsive">
+		    <div class="desc">
+		        <h3><?php echo $data['title']; ?></h3>
+		        <p><?php echo $data['description']; ?></p>
+		    </div>
+		    <div class="social">
+		       <div class="start"><?php echo date("Y-m-d", strtotime($data['flashdeal']['startFlashDeal'])); ?></div>
+		       <div class="end" ><?php echo date("Y-m-d", strtotime($data['flashdeal']['endFlashDeal'])); ?>
+		        </div>
+		        <div class="start"><?php echo $data['location']['lat']; ?></div> 
+		         <div class="end"><?php echo $data['location']['long']; ?></div>
+		    </div>
+		    </div>
+		</div>
+
+	</div>
+</div>
+
+</body>
+</html>
+

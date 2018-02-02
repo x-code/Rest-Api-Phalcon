@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+	<title>Payment Method</title>
+
+<style>
+.input-hidden {
+  position: absolute;
+  left: -9999px;
+}
+
+input[type=radio]:checked + label>img {
+  
+  box-shadow: 0 0 3px 3px #090;
+}
+
+/* Stuff after this is only to make things more pretty */
+input[type=radio] + label>img {
+  border: 0px solid #444;
+  
+  
+}
+
+body {
+	background-color: #eee;
+}
+
+
+</style>
+
+</head>
+<body>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-xs-12" align="center">
+			<!-- <span class="alerticon" style="display: block; margin-top: 20px"><img src="http://s22.postimg.org/i5iji9hv1/check.png" alt="checkmark" /></span> -->
+			<h1><img src="<?=$url?>dashboard/assets/panel/dist/img/logo-tunehotels.jpg"></h1>
+			<h5 class="alert alert-success" style="font-weight:bold;padding-top:20px"><span class="glyphicon glyphicon-credit-card"></span> PLEASE SELECT PAYMENT METHOD</h5>
+			<form method="put" action="<?=$url?>v1/payment/set-redirect" class="form-horizontal">
+			<input type="hidden" name="booking_id" value="<?php echo $this->request->get('booking_id') ?>"/>
+			<input type="hidden" name="grand_total" value="<?php echo $this->request->get('grand_total') ?>"/>
+			<input type="hidden" name="currency" value="<?php echo $this->request->get('currency') ?>"/>
+			<input type="hidden" name="discount_name" value="<?php echo $this->request->get('discount_name') ?>"/>
+			<input type="hidden" name="discount_value" value="<?php echo $this->request->get('discount_value') ?>"/>
+			<div class="row">
+			<?php 
+				$payment = json_decode($payment_method);
+				$no = 0;
+				foreach ($payment as $key => $pay) { $no++;?>
+				<div class="col-xs-6" style="padding-top:15px">
+			    
+			    <input type="radio" class="input-hidden" id="payment-<?php echo $no;?>" name="payment_method" value="<?php echo $pay->payment_gateway;?>,<?php echo $pay->post_url;?>,<?php echo $pay->merchant_account;?>,<?php echo $pay->skin;?>,<?php echo $pay->title;?>" required="required"/>
+			    <label for="payment-<?php echo $no;?>">
+			    <img src="http://th.tbvlabs.com/dashboard/assets/uploads/payments/<?php echo $pay->image_url;?>?<?=time()?>" style="width:80px;" align=center>
+			    </label>
+			    <?php //echo $pay->title;?>
+			  </div>
+			<?php } ?>
+			</div>
+						</div>
+						<div class="col-xs-12">
+					<br><br>
+					<button type="submit" class="btn btn-danger btn-lg btn-block"><span class="glyphicon glyphicon-play-circle"></span> NEXT</button>
+					
+
+					</div>
+			</form>
+
+	</div>
+</div>
+
+
+
+
+</body>
+</html>

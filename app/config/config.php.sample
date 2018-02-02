@@ -1,0 +1,31 @@
+<?php
+/**
+ * Settings to be stored in dependency injector
+ */
+$settings = array(
+    'version'             => '0.0.1',
+    'baseurl'             => 'http://th.tbvlabs.com/',
+    'verification_url'    => 'http://th.tbvlabs.com/',
+    'forgot_password_url' => 'http://th.tbvlabs.com/',
+    'log_location'        => dirname(__DIR__) . '/../public/logs/tune-api-' . date('Y-m-d') . '.log',
+    'annotation_location' => dirname(__DIR__) . "/../public/cache/",
+    'database'            => array(
+        'adapter'  => 'Mysql',
+        'host'     => 'localhost',
+        'username' => 'root',
+        'password' => '',
+        'dbname'   => 'th',
+    ),
+    'security'            => array(
+        "salt" => "",
+    ),
+    'assets'              => [],
+    'redis'               => [
+        'scheme'   => 'tcp',
+        'host'     => '127.0.0.1',
+        'port'     => 6379,
+        'database' => 2,
+        'ttl'      => "+1 month",
+    ],
+);
+return $settings;

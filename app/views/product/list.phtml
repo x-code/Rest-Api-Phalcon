@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<title>Product List</title>
+</head>
+<body>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-xs-12" align="center">
+		<?php $no = 0; foreach ($data as $value) {?>
+		<div class="col-xs-3" align="center">
+			<p><?php echo $value['title']; ?></p>
+			<img src="<?php echo $value['image']; ?>" width="300px" height="300px" class="img-responsive">
+		</div>
+	<?php } ?>
+
+	</div>
+</div>
+
+</body>
+</html>
+
